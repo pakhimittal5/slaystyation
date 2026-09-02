@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Styled by Pakhi — Fashion Styling</title>
+<meta name="description" content="Personal styling, outfit edits and shoppable looks.">
+
+<!-- ============================================================
+     GOOGLE ANALYTICS (GA4)
+     ============================================================ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5R8199VK3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5R8199VK3');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#5b3d40;
+    --cream:#fdf6f0;
+    --cream-deep:#f7ebe1;
+    --blush:#f6d9de;
+    --blush-deep:#eec2ca;
+    --rose:#d98ca3;
+    --rose-deep:#b8637e;
+    --gold:#c9a877;
+    --line: rgba(91,61,64,0.14);
+    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+    --script: "Caveat", cursive;
+    --sans: "Poppins", -apple-system, "Segoe UI", sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- little bow, used sparingly as the one recurring motif ---------- */
+  .bow{ display:inline-block; line-height:0; }
+  .bow svg{ display:block; }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(253,246,240,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:80px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--script);
+    font-weight:700;
+    font-size:1.7rem;
+    color:var(--rose-deep);
+    text-decoration:none;
+  }
+  .nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    margin:0; padding:0;
+    font-size:0.92rem;
+  }
+  .nav-links a{
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:3px;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{
+    border-color:var(--rose-deep);
+    color:var(--rose-deep);
+  }
+  .nav-cta{
+    background:var(--rose);
+    color:#fff;
+    padding:10px 22px;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:0.88rem;
+    font-weight:500;
+    white-space:nowrap;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .nav-cta:hover{background:var(--rose-deep); transform:translateY(-1px);}
+  .menu-toggle{display:none;}
+
+  @media (max-width:760px){
+    nav.wrap > .nav-links{display:none;} /* hide the inline desktop links */
+    .menu-toggle{
+      display:inline-flex;
+      background:none;border:1px solid var(--ink);
+      border-radius:999px;
+      padding:8px 14px;
+      font-family:var(--sans);
+      font-size:0.85rem;
+      cursor:pointer;
+      color:var(--ink);
+    }
+    #mobileNavLinks{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      max-height:0;
+      overflow:hidden;
+      padding:0 32px;
+      background:var(--cream);
+      border-top:1px solid transparent;
+      transition:max-height 0.25s ease, padding 0.25s ease;
+    }
+    #mobileNavLinks.open{
+      max-height:300px;
+      padding:16px 32px 20px;
+      border-top-color:var(--line);
+    }
+    #mobileNavLinks a{
+      display:block;
+      padding:10px 0;
+      width:100%;
+    }
+  }
+  @media (min-width:761px){
+    #mobileNavLinks{display:none;} /* only the desktop nav-links inside nav.wrap is used above 760px */
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:96px 0 80px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-120px; right:-120px;
+    width:340px; height:340px;
+    background:radial-gradient(circle, var(--blush) 0%, transparent 70%);
+    z-index:0;
+  }
+  .hero .wrap{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:48px;
+    align-items:end;
+  }
+  .hero .eyebrow{
+    font-family:var(--script);
+    font-size:1.4rem;
+    color:var(--rose-deep);
+    margin:0 0 6px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-style:italic;
+    font-size:clamp(2.5rem, 5.6vw, 4.2rem);
+    line-height:1.08;
+    margin:0 0 22px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lede{
+    max-width:46ch;
+    font-size:1.1rem;
+    color:#6e4f52;
+    margin:0 0 30px;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    text-decoration:none;
+    font-size:0.94rem;
+    font-weight:500;
+    border-radius:999px;
+    border:1px solid var(--ink);
+    transition:background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+  .btn-solid{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep);}
+  .btn-solid:hover{background:#9c4c64; transform:translateY(-1px);}
+  .btn-outline{border-color:var(--rose-deep); color:var(--rose-deep);}
+  .btn-outline:hover{background:var(--rose-deep);color:#fff;}
+
+  .hero-side{
+    background:#fffdfb;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:26px 28px;
+    font-size:0.94rem;
+    color:#6e4f52;
+  }
+  .hero-side .stat{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:11px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .hero-side .stat:last-child{border-bottom:none;}
+  .hero-side .stat b{font-family:var(--serif);font-style:italic;font-size:1.08rem;color:var(--rose-deep);}
+
+  @media (max-width:760px){
+    .hero .wrap{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:76px 0;border-bottom:1px solid var(--line);}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:24px;
+    margin-bottom:44px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-style:italic;
+    font-size:2.1rem;
+    margin:0;
+  }
+  .section-head .note{color:#7a5b5e;font-size:0.95rem;max-width:38ch;}
+
+  /* ---------- About ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+  }
+  .about-photo{
+    aspect-ratio:4/5;
+    background:linear-gradient(160deg, var(--blush), var(--blush-deep) 70%);
+    border-radius:24px;
+    display:flex;align-items:flex-end;
+    padding:22px;
+    font-family:var(--script);
+    font-size:1.3rem;
+    color:#8a4b57;
+  }
+  .about-copy p{margin:0 0 18px;color:#4f3639;}
+  .about-copy p:first-child{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.35rem;
+    line-height:1.5;
+    color:var(--ink);
+  }
+  @media (max-width:760px){
+    .about{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Styling tips ---------- */
+  .tips-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:22px;
+  }
+  .tip{
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:28px;
+    background:#fffdfb;
+  }
+  .tip h3{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.2rem;
+    margin:0 0 10px;
+  }
+  .tip p{margin:0;color:#6e4f52;font-size:0.96rem;}
+  .tip-a{grid-column:span 3;}
+  .tip-b{grid-column:span 3;}
+  .tip-c{grid-column:span 2; background:var(--rose-deep); color:#fff;}
+  .tip-c h3{color:#fff;}
+  .tip-c p{color:#f6dfe4;}
+  .tip-d{grid-column:span 4;}
+
+  @media (max-width:900px){
+    .tips-grid{grid-template-columns:1fr 1fr;}
+    .tip-a,.tip-b,.tip-c,.tip-d{grid-column:span 1;}
+  }
+  @media (max-width:560px){
+    .tips-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Shop the looks (Wishlink) ---------- */
+  .shop-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .shop-card{
+    border:1px solid var(--line);
+    border-radius:22px;
+    text-decoration:none;
+    color:var(--ink);
+    background:#fffdfb;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    transition:transform 0.2s ease, border-color 0.2s ease;
+  }
+  .shop-thumb{
+    aspect-ratio:3/4;
+    background:linear-gradient(200deg,var(--cream-deep),var(--blush));
+    position:relative;
+  }
+  .shop-thumb::after{
+    content:"";
+    position:absolute; top:14px; right:14px;
+    width:26px; height:26px;
+    background:var(--rose-deep);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-6.7-4.35-9.3-8.1C.9 10.1 1.6 6.6 4.6 5.2 7 4.1 9.3 5 12 7.6c2.7-2.6 5-3.5 7.4-2.4 3 1.4 3.7 4.9 1.9 7.7C18.7 16.65 12 21 12 21z'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-6.7-4.35-9.3-8.1C.9 10.1 1.6 6.6 4.6 5.2 7 4.1 9.3 5 12 7.6c2.7-2.6 5-3.5 7.4-2.4 3 1.4 3.7 4.9 1.9 7.7C18.7 16.65 12 21 12 21z'/%3E%3C/svg%3E") center/contain no-repeat;
+    opacity:0.55;
+  }
+  .shop-body{padding:18px 20px 22px;}
+  .shop-body .kicker{font-family:var(--script);font-size:1.05rem;color:var(--rose-deep);margin-bottom:4px;}
+  .shop-body h4{margin:0 0 8px;font-family:var(--serif);font-style:italic;font-size:1.1rem;font-weight:600;}
+  .shop-body span.price{font-size:0.88rem;color:#7a5b5e;}
+  .shop-card:hover{transform:translateY(-4px); border-color:var(--rose);}
+
+  @media (max-width:760px){
+    .shop-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .shop-grid{grid-template-columns:1fr;}
+  }
+
+  .shop-note{
+    margin-top:28px;
+    font-size:0.88rem;
+    color:#7a5b5e;
+    border-top:1px dashed var(--line);
+    padding-top:18px;
+  }
+
+  /* ---------- Contact / footer ---------- */
+  footer{padding:70px 0 50px;}
+  .contact-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  footer h2{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:2.2rem;
+    margin:0 0 6px;
+    font-weight:600;
+  }
+  footer p{margin:0;color:#6e4f52;}
+  .social-list{
+    display:flex;
+    gap:12px;
+    list-style:none;
+    padding:0;margin:0;
+    flex-wrap:wrap;
+  }
+  .social-list a{
+    text-decoration:none;
+    border:1px solid var(--rose-deep);
+    border-radius:999px;
+    padding:9px 20px;
+    font-size:0.92rem;
+    color:var(--rose-deep);
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .social-list a:hover{background:var(--rose-deep);color:#fff;}
+  .foot-legal{
+    margin-top:48px;
+    font-size:0.8rem;
+    color:#a68b8e;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <span class="bow" aria-hidden="true">
+        <svg width="20" height="16" viewBox="0 0 24 20" fill="none"><path d="M11 10c-2-3-6-6-9-4.5S-0.5 10 2 11.5 9 12 11 10zm2 0c2-3 6-6 9-4.5S24.5 10 22 11.5 15 12 13 10zm-1 0a1.6 1.6 0 1 0 0 3.2A1.6 1.6 0 0 0 12 10z" fill="#b8637e"/></svg>
+      </span>
+      Styled by Pakhi
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tips">Styling notes</a></li>
+      <li><a href="#shop">Shop the looks</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <!-- WISHLINK: replace the href below with your real storefront link -->
+    <a class="nav-cta" href="https://wishlink.com/pakhi" target="_blank" rel="noopener">Shop my picks</a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNavLinks">Menu</button>
+  </nav>
+  <ul class="nav-links" id="mobileNavLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tips">Styling notes</a></li>
+    <li><a href="#shop">Shop the looks</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNavLinks = document.getElementById('mobileNavLinks');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileNavLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+  mobileNavLinks.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      mobileNavLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">hi, I'm Pakhi</p>
+        <h1>Fashion styling, edited for real closets.</h1>
+        <p class="lede">I put together outfits, capsule edits and shoppable looks for people who want to dress well without overthinking it — follow along on Instagram, then shop what you see here.</p>
+        <div class="hero-actions">
+          <!-- INSTAGRAM: your real profile link -->
+          <a class="btn btn-solid" href="https://www.instagram.com/pakhiiiiii._" target="_blank" rel="noopener">Follow on Instagram</a>
+          <a class="btn btn-outline" href="#shop">Shop the looks</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="stat"><span>Focus</span><b>Everyday &amp; occasion styling</b></div>
+        <div class="stat"><span>Based in</span><b>Pune, India</b></div>
+        <div class="stat"><span>Shop links</span><b>Via Wishlink</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-photo">add a photo here ♡</div>
+      <div class="about-copy">
+        <p>I started this page to make styling feel less intimidating — fewer trends to chase, more outfits that actually work for the body and life you already have.</p>
+        <p>Every post is built around pieces that are easy to find and easy to repeat: a few anchor items, restyled a dozen ways. If something in a post catches your eye, you'll usually find it linked below, ready to shop.</p>
+        <p>New edits go up through the week — outfit breakdowns, seasonal swaps, and the occasional "what I'd wear if I were you" request from followers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Styling notes</h2>
+        <p class="note">A few working principles behind most of the outfits I post.</p>
+      </div>
+      <div class="tips-grid">
+        <div class="tip tip-a">
+          <h3>Build from one anchor piece</h3>
+          <p>Pick the one item you already love, then style everything else to support it rather than compete with it.</p>
+        </div>
+        <div class="tip tip-b">
+          <h3>Repeat pieces on purpose</h3>
+          <p>A great blazer or trouser earns its place by showing up in five different outfits, not by being worn once.</p>
+        </div>
+        <div class="tip tip-c">
+          <h3>Fit over trend</h3>
+          <p>A well-fitted basic will outlast almost anything trend-led sitting in your feed right now.</p>
+        </div>
+        <div class="tip tip-d">
+          <h3>Accessories set the tone</h3>
+          <p>The same outfit can read casual, polished, or evening-ready depending on what you add at the end — bag, shoe, jewellery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Shop the looks</h2>
+        <p class="note">Pieces from recent posts, linked through Wishlink.</p>
+      </div>
+      <div class="shop-grid">
+        <!-- WISHLINK: swap each href for the real product link once your storefront is live -->
+        <a class="shop-card" href="https://wishlink.com/pakhi" target="_blank" rel="noopener">
+          <div class="shop-thumb"></div>
+          <div class="shop-body">
+            <div class="kicker">from this week</div>
+            <h4>Tailored co-ord set</h4>
+            <span class="price">Shop on Wishlink</span>
+          </div>
+        </a>
+        <a class="shop-card" href="https://wishlink.com/pakhi" target="_blank" rel="noopener">
+          <div class="shop-thumb"></div>
+          <div class="shop-body">
+            <div class="kicker">everyday edit</div>
+            <h4>Straight-fit denim</h4>
+            <span class="price">Shop on Wishlink</span>
+          </div>
+        </a>
+        <a class="shop-card" href="https://wishlink.com/pakhi" target="_blank" rel="noopener">
+          <div class="shop-thumb"></div>
+          <div class="shop-body">
+            <div class="kicker">layering piece</div>
+            <h4>Structured blazer</h4>
+            <span class="price">Shop on Wishlink</span>
+          </div>
+        </a>
+      </div>
+      <p class="shop-note">Replace each card's link with your actual Wishlink product URL once your storefront is live — the thumbnail blocks are placeholders for your photos.</p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="contact-row">
+        <div>
+          <h2>Let's connect</h2>
+          <p>For collaborations, styling requests, or just to say hi.</p>
+        </div>
+        <ul class="social-list">
+          <li><a href="https://www.instagram.com/pakhiiiiii._" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://wishlink.com/pakhi" target="_blank" rel="noopener">Wishlink</a></li>
+          <li><a href="mailto:hello@example.com">Email</a></li>
+        </ul>
+      </div>
+      <p class="foot-legal">© 2026 Styled by Pakhi. Built for a social media analytics project.</p>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
