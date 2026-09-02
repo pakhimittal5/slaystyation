@@ -121,6 +121,8 @@
   .nav-cta:hover{background:var(--rose-deep); transform:translateY(-1px);}
   .menu-toggle{display:none;}
 
+  .menu-toggle-checkbox{display:none;}
+
   @media (max-width:760px){
     nav.wrap > .nav-links{display:none;} /* hide the inline desktop links */
     .menu-toggle{
@@ -144,7 +146,8 @@
       border-top:1px solid transparent;
       transition:max-height 0.25s ease, padding 0.25s ease;
     }
-    #mobileNavLinks.open{
+    /* pure-CSS toggle: when the hidden checkbox is checked, expand the menu */
+    .menu-toggle-checkbox:checked ~ #mobileNavLinks{
       max-height:300px;
       padding:16px 32px 20px;
       border-top-color:var(--line);
@@ -270,13 +273,11 @@
   }
   .about-photo{
     aspect-ratio:4/5;
-    background:linear-gradient(160deg, var(--blush), var(--blush-deep) 70%);
+    width:100%;
+    object-fit:cover;
     border-radius:24px;
-    display:flex;align-items:flex-end;
-    padding:22px;
-    font-family:var(--script);
-    font-size:1.3rem;
-    color:#8a4b57;
+    /* fallback background shows while the image loads or if it's missing */
+    background:linear-gradient(160deg, var(--blush), var(--blush-deep) 70%);
   }
   .about-copy p{margin:0 0 18px;color:#4f3639;}
   .about-copy p:first-child{
@@ -345,6 +346,13 @@
     aspect-ratio:3/4;
     background:linear-gradient(200deg,var(--cream-deep),var(--blush));
     position:relative;
+    overflow:hidden;
+  }
+  .shop-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
   }
   .shop-thumb::after{
     content:"";
@@ -435,8 +443,9 @@
     </ul>
     <!-- WISHLINK: replace the href below with your real storefront link -->
     <a class="nav-cta" href="https://wishlink.com/pakhi" target="_blank" rel="noopener">Shop my picks</a>
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNavLinks">Menu</button>
+    <label for="menuToggle" class="menu-toggle">Menu</label>
   </nav>
+  <input type="checkbox" id="menuToggle" class="menu-toggle-checkbox">
   <ul class="nav-links" id="mobileNavLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#tips">Styling notes</a></li>
@@ -444,21 +453,6 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </header>
-<script>
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileNavLinks = document.getElementById('mobileNavLinks');
-  menuToggle.addEventListener('click', () => {
-    const isOpen = mobileNavLinks.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', isOpen);
-  });
-  mobileNavLinks.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') {
-      mobileNavLinks.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-</script>
 
 <main id="top">
 
@@ -484,7 +478,7 @@
 
   <section id="about">
     <div class="wrap about">
-      <div class="about-photo">add a photo here ♡</div>
+      <img class="about-photo" src="images/about.jpg" alt="Pakhi, styling">
       <div class="about-copy">
         <p>I started this page to make styling feel less intimidating — fewer trends to chase, more outfits that actually work for the body and life you already have.</p>
         <p>Every post is built around pieces that are easy to find and easy to repeat: a few anchor items, restyled a dozen ways. If something in a post catches your eye, you'll usually find it linked below, ready to shop.</p>
@@ -529,7 +523,7 @@
       <div class="shop-grid">
         <!-- WISHLINK: swap each href for the real product link once your storefront is live -->
         <a class="shop-card" href="https://wishlink.com/pakhi" target="_blank" rel="noopener">
-          <div class="shop-thumb"></div>
+          <div class="shop-thumb"><img src="images/look1.jpg" alt="Tailored co-ord set"></div>
           <div class="shop-body">
             <div class="kicker">from this week</div>
             <h4>Tailored co-ord set</h4>
@@ -537,7 +531,7 @@
           </div>
         </a>
         <a class="shop-card" href="https://wishlink.com/pakhi" target="_blank" rel="noopener">
-          <div class="shop-thumb"></div>
+          <div class="shop-thumb"><img src="images/look2.jpg" alt="Straight-fit denim"></div>
           <div class="shop-body">
             <div class="kicker">everyday edit</div>
             <h4>Straight-fit denim</h4>
@@ -545,7 +539,7 @@
           </div>
         </a>
         <a class="shop-card" href="https://wishlink.com/pakhi" target="_blank" rel="noopener">
-          <div class="shop-thumb"></div>
+          <div class="shop-thumb"><img src="images/look3.jpg" alt="Structured blazer"></div>
           <div class="shop-body">
             <div class="kicker">layering piece</div>
             <h4>Structured blazer</h4>
