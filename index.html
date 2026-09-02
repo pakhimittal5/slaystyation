@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Styled by Riya — Fashion Styling</title>
+<meta name="description" content="Personal styling, outfit edits and shoppable looks.">
+
+<!-- ============================================================
+     GOOGLE ANALYTICS (GA4)
+     Replace G-XXXXXXXXXX below with YOUR Measurement ID
+     (found in GA4 > Admin > Data Streams > your stream)
+     ============================================================ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+  :root{
+    --ink:#1c1717;
+    --ivory:#f7f1e8;
+    --berry:#7a1f3d;
+    --blush:#e9c9c6;
+    --brass:#a9814e;
+    --line: rgba(28,23,23,0.14);
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Work Sans", -apple-system, "Segoe UI", sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,241,232,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.35rem;
+    letter-spacing:0.01em;
+    text-decoration:none;
+  }
+  .nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0; padding:0;
+    font-size:0.95rem;
+  }
+  .nav-links a{
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:3px;
+    transition:border-color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{
+    border-color:var(--berry);
+  }
+  .nav-cta{
+    background:var(--berry);
+    color:var(--ivory);
+    padding:9px 18px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:0.9rem;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:#631733;}
+  .menu-toggle{display:none;}
+
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .menu-toggle{
+      display:inline-flex;
+      background:none;border:1px solid var(--ink);
+      border-radius:2px;
+      padding:8px 12px;
+      font-family:var(--sans);
+      font-size:0.85rem;
+      cursor:pointer;
+    }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:88px 0 72px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:48px;
+    align-items:end;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    line-height:1.02;
+    margin:0 0 22px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lede{
+    max-width:46ch;
+    font-size:1.15rem;
+    color:#3a3232;
+    margin:0 0 28px;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 24px;
+    text-decoration:none;
+    font-size:0.95rem;
+    border-radius:2px;
+    border:1px solid var(--ink);
+  }
+  .btn-solid{background:var(--ink);color:var(--ivory);}
+  .btn-solid:hover{background:var(--berry);border-color:var(--berry);}
+  .btn-outline:hover{background:var(--ink);color:var(--ivory);}
+
+  .hero-side{
+    border-left:1px solid var(--line);
+    padding-left:32px;
+    font-size:0.95rem;
+    color:#4a4141;
+  }
+  .hero-side .stat{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-side .stat:last-child{border-bottom:none;}
+  .hero-side .stat b{font-family:var(--serif);font-size:1.1rem;color:var(--ink);}
+
+  @media (max-width:760px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-side{border-left:none;border-top:1px solid var(--line);padding:24px 0 0;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:72px 0;border-bottom:1px solid var(--line);}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:24px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:2rem;
+    margin:0;
+  }
+  .section-head .note{color:#5c5252;font-size:0.95rem;max-width:38ch;}
+
+  /* ---------- About ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+  }
+  .about-photo{
+    aspect-ratio:4/5;
+    background:linear-gradient(160deg, var(--blush), #d9b8b3 70%);
+    border-radius:2px;
+    display:flex;align-items:flex-end;
+    padding:20px;
+    font-family:var(--serif);
+    color:#4a1c28;
+    font-size:1.05rem;
+  }
+  .about-copy p{margin:0 0 18px;color:#332c2c;}
+  .about-copy p:first-child{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    line-height:1.4;
+    color:var(--ink);
+  }
+  @media (max-width:760px){
+    .about{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Styling tips (editorial, uneven grid) ---------- */
+  .tips-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:24px;
+  }
+  .tip{
+    border:1px solid var(--line);
+    padding:26px;
+    background:#fffdfa;
+  }
+  .tip h3{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.25rem;
+    margin:0 0 10px;
+  }
+  .tip p{margin:0;color:#4a4141;font-size:0.96rem;}
+  .tip-a{grid-column:span 3;}
+  .tip-b{grid-column:span 3;}
+  .tip-c{grid-column:span 2; background:var(--ink); color:var(--ivory);}
+  .tip-c h3{color:var(--ivory);}
+  .tip-c p{color:#e6dcd6;}
+  .tip-d{grid-column:span 4;}
+
+  @media (max-width:900px){
+    .tips-grid{grid-template-columns:1fr 1fr;}
+    .tip-a,.tip-b,.tip-c,.tip-d{grid-column:span 1;}
+  }
+  @media (max-width:560px){
+    .tips-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Shop the looks (Wishlink) ---------- */
+  .shop-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .shop-card{
+    border:1px solid var(--line);
+    text-decoration:none;
+    color:var(--ink);
+    background:#fffdfa;
+    display:flex;
+    flex-direction:column;
+  }
+  .shop-thumb{
+    aspect-ratio:3/4;
+    background:linear-gradient(200deg,#efe3d4,var(--blush));
+  }
+  .shop-body{padding:16px 18px 20px;}
+  .shop-body .kicker{font-size:0.82rem;color:var(--brass);margin-bottom:6px;}
+  .shop-body h4{margin:0 0 8px;font-family:var(--serif);font-size:1.08rem;font-weight:600;}
+  .shop-body span.price{font-size:0.9rem;color:#5c5252;}
+  .shop-card:hover .shop-thumb{outline:2px solid var(--berry);outline-offset:-2px;}
+
+  @media (max-width:760px){
+    .shop-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .shop-grid{grid-template-columns:1fr;}
+  }
+
+  .shop-note{
+    margin-top:28px;
+    font-size:0.88rem;
+    color:#5c5252;
+    border-top:1px solid var(--line);
+    padding-top:18px;
+  }
+
+  /* ---------- Contact / footer ---------- */
+  footer{padding:64px 0 48px;}
+  .contact-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  footer h2{
+    font-family:var(--serif);
+    font-size:2.1rem;
+    margin:0 0 6px;
+    font-weight:600;
+  }
+  footer p{margin:0;color:#4a4141;}
+  .social-list{
+    display:flex;
+    gap:18px;
+    list-style:none;
+    padding:0;margin:0;
+  }
+  .social-list a{
+    text-decoration:none;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+    font-size:0.95rem;
+  }
+  .social-list a:hover{color:var(--berry);border-color:var(--berry);}
+  .foot-legal{
+    margin-top:48px;
+    font-size:0.8rem;
+    color:#8a8080;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#top">Styled by Riya</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tips">Styling notes</a></li>
+      <li><a href="#shop">Shop the looks</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="https://wishlink.com/" target="_blank" rel="noopener">Shop my picks</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Fashion styling, edited for real closets.</h1>
+        <p class="lede">I put together outfits, capsule edits and shoppable looks for people who want to dress well without overthinking it — follow along on Instagram, then shop what you see here.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="https://instagram.com/" target="_blank" rel="noopener">Follow on Instagram</a>
+          <a class="btn btn-outline" href="#shop">Shop the looks</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="stat"><span>Focus</span><b>Everyday &amp; occasion styling</b></div>
+        <div class="stat"><span>Based in</span><b>Pune, India</b></div>
+        <div class="stat"><span>Shop links</span><b>Via Wishlink</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-photo">Add a photo here</div>
+      <div class="about-copy">
+        <p>I started this page to make styling feel less intimidating — fewer trends to chase, more outfits that actually work for the body and life you already have.</p>
+        <p>Every post is built around pieces that are easy to find and easy to repeat: a few anchor items, restyled a dozen ways. If something in a post catches your eye, you'll usually find it linked below, ready to shop.</p>
+        <p>New edits go up through the week — outfit breakdowns, seasonal swaps, and the occasional "what I'd wear if I were you" request from followers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Styling notes</h2>
+        <p class="note">A few working principles behind most of the outfits I post.</p>
+      </div>
+      <div class="tips-grid">
+        <div class="tip tip-a">
+          <h3>Build from one anchor piece</h3>
+          <p>Pick the one item you already love, then style everything else to support it rather than compete with it.</p>
+        </div>
+        <div class="tip tip-b">
+          <h3>Repeat pieces on purpose</h3>
+          <p>A great blazer or trouser earns its place by showing up in five different outfits, not by being worn once.</p>
+        </div>
+        <div class="tip tip-c">
+          <h3>Fit over trend</h3>
+          <p>A well-fitted basic will outlast almost anything trend-led sitting in your feed right now.</p>
+        </div>
+        <div class="tip tip-d">
+          <h3>Accessories set the tone</h3>
+          <p>The same outfit can read casual, polished, or evening-ready depending on what you add at the end — bag, shoe, jewellery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Shop the looks</h2>
+        <p class="note">Pieces from recent posts, linked through Wishlink.</p>
+      </div>
+      <div class="shop-grid">
+        <a class="shop-card" href="https://wishlink.com/" target="_blank" rel="noopener">
+          <div class="shop-thumb"></div>
+          <div class="shop-body">
+            <div class="kicker">From this week's post</div>
+            <h4>Tailored co-ord set</h4>
+            <span class="price">Shop on Wishlink</span>
+          </div>
+        </a>
+        <a class="shop-card" href="https://wishlink.com/" target="_blank" rel="noopener">
+          <div class="shop-thumb"></div>
+          <div class="shop-body">
+            <div class="kicker">Everyday edit</div>
+            <h4>Straight-fit denim</h4>
+            <span class="price">Shop on Wishlink</span>
+          </div>
+        </a>
+        <a class="shop-card" href="https://wishlink.com/" target="_blank" rel="noopener">
+          <div class="shop-thumb"></div>
+          <div class="shop-body">
+            <div class="kicker">Layering piece</div>
+            <h4>Structured blazer</h4>
+            <span class="price">Shop on Wishlink</span>
+          </div>
+        </a>
+      </div>
+      <p class="shop-note">Replace each card's link with your actual Wishlink product URL once your storefront is live — the thumbnail blocks are placeholders for your photos.</p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="contact-row">
+        <div>
+          <h2>Let's connect</h2>
+          <p>For collaborations, styling requests, or just to say hi.</p>
+        </div>
+        <ul class="social-list">
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://wishlink.com/" target="_blank" rel="noopener">Wishlink</a></li>
+          <li><a href="mailto:hello@example.com">Email</a></li>
+        </ul>
+      </div>
+      <p class="foot-legal">© 2026 Styled by Riya. Built for a social media analytics project.</p>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
